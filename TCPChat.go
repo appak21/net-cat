@@ -12,6 +12,8 @@ import (
 	"time"
 )
 
+const TimeFormat = "2006-01-02 15:04:05"
+
 var (
 	conns    = map[string]net.Conn{}
 	messages string
@@ -108,6 +110,5 @@ func send(name, msg string, inform bool) {
 }
 
 func getTime() string {
-	date := time.Now()
-	return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d", date.Year(), date.Month(), date.Day(), date.Hour(), date.Minute(), date.Second())
+	return time.Now().Format(TimeFormat)
 }
